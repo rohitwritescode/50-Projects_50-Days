@@ -1,11 +1,11 @@
 const boxes = document.querySelectorAll('.box');
 
 window.addEventListener('scroll', () => {
-    const triggerScroll = window.innerHeight / 5 * 4;
 
+    const triggerScroll = window.innerHeight / 5 * 4;
     boxes.forEach(box => {
         const boxTop = box.getBoundingClientRect().top
-
+        
         if(boxTop < triggerScroll) {
             box.classList.add('show')
         } else {
