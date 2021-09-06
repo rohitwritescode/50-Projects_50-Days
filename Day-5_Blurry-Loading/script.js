@@ -3,9 +3,7 @@ const bg = document.querySelector('.background');
 
 let loadingProgess = 0;
 
-let loadingInterval = setInterval(blurring, 30)
-
-function blurring() {
+loadingInterval = setInterval(() => {
     loadingProgess++;
     if (loadingProgess > 99) {
         clearInterval(loadingInterval)
@@ -13,7 +11,7 @@ function blurring() {
     loadingText.innerText = `${loadingProgess}%`
     loadingText.style.opacity = scale(loadingProgess, 0, 100, 1, 0)
     bg.style.filter = `blur(${scale(loadingProgess, 0, 100, 30, 0)}px)`
-}
+}, 30)
 
 function scale (number, inMin, inMax, outMin, outMax) {
     return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
