@@ -12,13 +12,35 @@ const remaining = document.getElementById('remaining')
 
 userInputCups.forEach((cup, idx) => {
     cup.addEventListener('click', ()=> {
-        cup.classList.toggle('full')
-        if(cup.innerText === '250ml') updateBigCup(25)
+        cup.classList.add('full')
+        setTimeout(() => {cup.classList.remove('full')}, 500);
+        if(cup.classList.contains('full')) {
+            if(cup.innerText === '250ml') updateBigCup(25)
+            if(cup.innerText === '330ml') updateBigCup(33)
+            if(cup.innerText === '500ml') updateBigCup(50)
+            if(cup.innerText === '750ml') updateBigCup(75)
+            if(cup.innerText === '1l') updateBigCup(100)
+        }
     })
 })
 
-function updateBigCup(fillPercent) {
+function updateBigCup(mlPercentageAdded) {
     percentage.style.visibility = 'visible'
-    waterFilled = percentage.style.height
-    percentage.style.height = waterFilled + `${fillPercent}%`
+    
+    let currentLevel = percentage.style.height.split('%')
+    console.log(currentLevel)
+    if(currentLevel[0] === '') {
+        percentage.style.height = `${mlPercentageAdded/2}%`
+        percentage.innerText = `${mlPercentageAdded/2}%`
+        liters.innerText = `${((100 - mlPercentageAdded/2) * 2)/100} l`
+    } else {
+        let waterFilled = +currentLevel[0]
+        console.log(waterFilled)
+        percentage.style.height = `${waterFilled + mlPercentageAdded/2}%`
+        percentage.innerText = `${waterFilled + mlPercentageAdded/2}%`
+        liters.innerText = `${((100 - (waterFilled + mlPercentageAdded/2)) * 2)/100} l`
+        if(percentage.style.height >= '100%') {
+            remaining.style.height = 0
+        }
+    }
 }
