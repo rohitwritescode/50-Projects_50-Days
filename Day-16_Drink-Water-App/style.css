@@ -12,7 +12,6 @@
 body {
   background-color: #3494e4;
   color: white;
-  /* font-size: 2rem; */
   font-family: 'Montserrat', sans-serif;
   display: flex;
   flex-direction: column;
@@ -42,6 +41,10 @@ h3 {
   flex-direction: column;
   overflow: hidden;
   transition: background-color 0.5s ease;
+}
+
+.cup:active {
+  transform: scale(0.98);
 }
 
 .big-cup {
@@ -164,11 +167,27 @@ h3 {
   justify-content: center;
   font-weight: bold;
   font-size: 1rem;
-  height: 0;
+  height: 0%;
   transition: 0.3s ease;
 }
 
 .text {
   text-align: center;
   margin: 0 0 0.5rem;
+}
+
+.reset {
+  font-family: inherit;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 0.01rem solid var(--border-color);
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+
+.reset:active {
+  transform: scale(0.98);
+  background-color: var(--fill-color);
+  color: white;
 }

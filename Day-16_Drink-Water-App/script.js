@@ -3,12 +3,14 @@ const cup330ml = document.querySelectorAll('.cup-smallish');
 const cup500ml = document.querySelectorAll('.cup-med');
 const cup750ml = document.querySelectorAll('.cup-lg');
 const cup1l = document.querySelectorAll('.cup-xl');
-
-userInputCups = document.querySelectorAll('.cup')
-
+const userInputCups = document.querySelectorAll('.cup')
 const liters = document.getElementById('liters')
 const percentage = document.getElementById('percentage')
 const remaining = document.getElementById('remaining')
+
+const resetButton = document.querySelector('.reset')
+
+liters.innerText = '2l'
 
 userInputCups.forEach((cup, idx) => {
     cup.addEventListener('click', ()=> {
@@ -22,6 +24,12 @@ userInputCups.forEach((cup, idx) => {
             if(cup.innerText === '1l') updateBigCup(100)
         }
     })
+})
+
+resetButton.addEventListener('click', ()=> {
+    percentage.style.height = '0%'
+    percentage.innerText = ''
+    liters.innerText = '2l'
 })
 
 function updateBigCup(mlPercentageAdded) {
